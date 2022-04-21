@@ -1,11 +1,12 @@
 # ReportSalesCoffee
+
 **ความเป็นมาของโปรแกรม**
 ```
 เนื่องจากในตอนเด็กผมอยากกิจการร้านกาแฟเล็กๆเป็นของตัวเอง ผมจึงสร้างโปรแกรมนี้ขึ้นมา
 ```
 **วัตถุประสงค์ของโปรแกรม**
 ```
-โปรแกรมนี้สร้างขึ้นเพื่อที่จะบันทึกว่าในเเต่ละวันมีการขายกาแฟและของหวานไปเท่าไหร่
+โปรแกรมนี้สร้างขึ้นเพื่อที่จะบันทึกว่าในเเต่ละวันมีการขายกาแฟและของหวานอาหารไปเท่าไหร่
 ```
 **Class diagram**
 ```mermaid
@@ -20,9 +21,11 @@ classDiagram
   }
   class form2{
   -coffee
-  -dessert
+  -sweet
+  -food
   logincoffee()
   logindessert()
+  loginfood()
   }
   class classcoffee{
   -number
@@ -31,7 +34,14 @@ classDiagram
   -date
   add()
   }
-  class classdessert{
+  class classsweet{
+  -number
+  -name
+  -amount
+  -date
+  add()
+  }
+  class classfood{
   -number
   -name
   -amount
@@ -43,16 +53,21 @@ classDiagram
   open()
   save()
   }
-  class Filedessert{
+  class Filesweet{
   -
   open()
   save()
   }
-  class opendessert{
+  class Filefood{
+  -
+  open()
+  save()
+  }
+  class opensweet{
   -location file
   open file()
   }
-  class savedessert{
+  class savesweet{
   -location file
   save file()
   }
@@ -64,20 +79,35 @@ classDiagram
   -location file
   save file()
   }
+  class openfood{
+  -location file
+  open file()
+  }
+  class savefood{
+  -location file
+  save file()
+  }
+  
+  savefood --|> Filefood
+  openfood --|> Filefood
+  
   savecoffee --|> Filecoffee
   opencoffee --|> Filecoffee
   
-  savedessert --|> Filedessert
-  opendessert --|> Filedessert
+  savesweet --|> Filesweet
+  opensweet --|> Filesweet
   
-  Filedessert --|> classdessert
+  Filesweet --|> classsweet
   Filecoffee --|> classcoffee
+  Filefood --|> classfood
   
   classcoffee --|> form2
-  classdessert --|> form2
+  classsweet --|> form2
+  classfood --|> form2
+
   
   form2 --|> form1
   logout --|> form1
   ```
 **เจ้าของโปรแกรม**
-```นาย ศรันย์ ซุ่นเส้ง```
+```นาย ศรันย์ ซุ่นเส้ง 643450086-6```
